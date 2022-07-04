@@ -1,10 +1,10 @@
 {
-	"id": "obsidian-sample-plugin",
-	"name": "Sample Plugin",
-	"version": "1.0.1",
+	"id": "obsidian-plugin-time-diff",
+	"name": "TimeDiff plugin",
+	"version": "0.0.1",
 	"minAppVersion": "0.12.0",
-	"description": "This is a sample plugin for Obsidian. This plugin demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
+	"description": "Plugin which calculates and displays diff in hours and minutes between two dates in `timediff` markdown block",
+	"author": "Grzegorz Dominiczak (https://github.com/dominiczaq)",
+	"authorUrl": "https://github.com/dominiczaq/obsidian-plugin-time-diff",
 	"isDesktopOnly": false
 }
