@@ -34,21 +34,21 @@ export default class TimeDiffPlugin extends Plugin {
 					div.createEl("span", {
 						text: `${row}`,
 					});
-					const diffSpan = div.createEl("span", {
+					div.createEl("span", {
 						text: `\t${readableDiff}`,
+						cls: "timediff-accent",
 					});
-					diffSpan.style.color = "var(--interactive-accent)";
 				}
 				const div = el.createEl("div");
 				div.createEl("span", {
 					text: `Total: `,
 				});
-				const diffSpan = div.createEl("span", {
+				div.createEl("span", {
 					text: `${
 						calculateTimeDiffs(totalSumInMinutes).readableDiff
 					}`,
+					cls: "timediff-accent",
 				});
-				diffSpan.style.color = "var(--interactive-accent)";
 			}
 		);
 	}
