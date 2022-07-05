@@ -1,5 +1,5 @@
 import { Plugin } from "obsidian";
-import { differenceInMinutes } from "date-fns";
+import { moment } from "obsidian";
 
 export default class TimeDiffPlugin extends Plugin {
 	async onload() {
@@ -7,7 +7,7 @@ export default class TimeDiffPlugin extends Plugin {
 
 		this.registerMarkdownCodeBlockProcessor(
 			"timediff",
-			(source, el, ctx) => {
+			(source, el, _ctx) => {
 				let totalSumInMinutes = 0;
 				const rows = source.split("\n").filter((row) => row.length > 0);
 				for (const row of rows) {
@@ -22,12 +22,11 @@ export default class TimeDiffPlugin extends Plugin {
 					const timeElements = match[0].trim().split(" - ");
 					const [left, right] = timeElements.map((timeElement) => {
 						const [hours, minutes] = timeElement.split(":");
-						return new Date().setHours(
-							Number(hours),
-							Number(minutes)
-						);
+						return moment()
+							.hours(Number(hours))
+							.minutes(Number(minutes));
 					});
-					const totalDiffInMinutes = differenceInMinutes(right, left);
+					const totalDiffInMinutes = right.diff(left, "minutes");
 					totalSumInMinutes += totalDiffInMinutes;
 					const { readableDiff } =
 						calculateTimeDiffs(totalDiffInMinutes);
