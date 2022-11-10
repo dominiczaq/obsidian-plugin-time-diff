@@ -3,7 +3,7 @@
 This is a plugin for Obsidian (https://obsidian.md).
 ## How to use
 
-Add time to `timediff` markdown block
+* Add time to `timediff` markdown block
 
 ```timediff
 11:10 - 12:20
@@ -14,6 +14,8 @@ Add time to `timediff` markdown block
 
 In reading mode diffs between the dates will be parsed and presented in readable format.
 Sum of diffs will be presented at the bottom of the block.
+
+* Adds `TimeDiff plugin - total-diff` command, which calculates total sum of all `timediff` blocks on the page.
 
 ## Local development
 
