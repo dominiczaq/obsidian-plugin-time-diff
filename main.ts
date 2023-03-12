@@ -1,4 +1,10 @@
-import { MarkdownView, Notice, Plugin } from "obsidian";
+import {
+	Editor,
+	MarkdownFileInfo,
+	MarkdownView,
+	Notice,
+	Plugin,
+} from "obsidian";
 import { moment } from "obsidian";
 
 enum ClassNames {
@@ -17,7 +23,7 @@ export default class TimeDiffPlugin extends Plugin {
 	async onload() {
 		this.addCommand({
 			id: "timediff-total",
-			name: "timediff-total",
+			name: "Show total time diff count in current file",
 			checkCallback: (checking: boolean) => {
 				if (!checking) {
 					const file = this.app.workspace.getActiveFile();
@@ -82,6 +88,25 @@ export default class TimeDiffPlugin extends Plugin {
 					}
 				}
 				return true;
+			},
+		});
+
+		this.addCommand({
+			id: "timediff-add-timediff-block",
+			name: "Insert timediff block",
+			editorCallback: (editor: Editor) => {
+				editor.replaceSelection("```timediff\n\n````");
+			},
+		});
+
+		this.addCommand({
+			id: "timediff-add-current-time",
+			name: "Insert current time",
+			editorCallback: (editor: Editor) => {
+				const currentTIme = moment();
+				editor.replaceSelection(
+					`${currentTIme.hours()}:${currentTIme.minutes()}`
+				);
 			},
 		});
 
