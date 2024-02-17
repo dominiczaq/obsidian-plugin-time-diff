@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-plugin-time-diff",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "This is a plugin for Obsidian (https://obsidian.md) which calculates and displays diff in hours and minutes between two dates in `timediff` markdown block",
 	"main": "main.js",
 	"scripts": {
