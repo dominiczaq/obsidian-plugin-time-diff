@@ -113,6 +113,22 @@ export default class TimeDiffPlugin extends Plugin {
 		this.registerMarkdownCodeBlockProcessor(
 			"timediff",
 			(source, el, _ctx) => {
+				el.addEventListener("click", (ev) => {
+					if (ev.ctrlKey || ev.metaKey) {
+						const view =
+							this.app.workspace.getActiveViewOfType(
+								MarkdownView
+							);
+						if (view) {
+							const sectionInfo = _ctx.getSectionInfo(el);
+							if (sectionInfo) {
+								ev.preventDefault();
+								view.editor.setCursor(sectionInfo.lineStart, 0);
+								view.editor.focus();
+							}
+						}
+					}
+				});
 				let totalSumInMinutes = 0;
 				const rows = source.split("\n").filter((row) => row.length > 0);
 				for (const row of rows) {
